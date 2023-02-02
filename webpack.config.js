@@ -8,7 +8,9 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/,
-            use: 'css-loader',
+            use:  [
+                MiniCssExtractPlugin.loader, 'css-loader',
+              ],
         }, ],
     },
     plugins: [
@@ -18,7 +20,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[id].css',
+            chunkFilename: './dist/main.css',
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
